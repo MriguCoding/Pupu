@@ -1,0 +1,39 @@
+def solution(n):
+    # TODO convert int to roman string
+    romstr=""
+    n=str(n)
+    j=1
+    for i in range (0, len(str(n))):
+        mul=int(n[i])*(10**(len(str(n))-j))
+        if mul>=1 and mul<4:
+            romstr= romstr+"I"*int(n[i])
+        elif mul==4:
+            romstr=romstr+"IV"
+        elif mul==9:
+            romstr=romstr+"IX"
+        elif mul>=5 and mul<9:
+            romstr= romstr+"V"+"I"*int(int(n[i])-5)
+        elif mul>=10 and mul<40:
+            romstr= romstr+ "X"*int(mul/10)
+        elif mul==40:
+            romstr=romstr+"XL"
+        elif mul>=50 and mul<90:
+            romstr= romstr+"L"+ "X"* int((mul-50)/10)         
+        elif mul==90:
+            romstr=romstr+"XC"
+        if mul>=100 and mul<400:
+            romstr= romstr+"C"*int(mul/100)
+        elif mul==400:
+            romstr=romstr+"CD"
+        elif mul==900:
+            romstr=romstr+"CM"
+        elif mul>=500 and mul<900:
+            romstr= romstr+"D"+"C"*int((mul-500)/100)
+        if mul>=1000 and mul<4000:
+            romstr= romstr+"M"*int((mul)/1000)
+        elif mul==4000:
+            romstr=romstr+"MV"
+        elif mul==9000:
+            romstr=romstr+"MX"
+        j=j+1
+    return romstr
